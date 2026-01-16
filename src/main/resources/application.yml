@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: user-service
+
+  data:
+    mongodb:
+      auto-index-creation: true
+  mongodb:
+    host: localhost
+    port: 27017
+    database: examdb
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+
+springdoc:
+  swagger-ui:
+    path: /exa-tec-doc
