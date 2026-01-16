@@ -13,7 +13,7 @@ public class CopomexSimplified {
     private String codigoPostal;
 
     @JsonProperty("asentamiento")
-    private List<String> colonias; // ✅ ARRAY
+    private List<String> colonias;
 
     @JsonProperty("tipo_asentamiento")
     private String tipoAsentamiento;

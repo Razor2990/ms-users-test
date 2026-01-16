@@ -28,6 +28,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserResponseDto> findAll() {
 		
+		log.info("Obteniendo información de todos los registros...");
+		
 		return userRepository.findAll()
 				.stream()
 				.map(userMapper::toDto)
@@ -36,7 +38,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public UserResponseDto findById(String id) {
-		
+		log.info("Obteniendo información del usuario con id: {}" + id);
 		return userRepository.findById(id)
 				.map(userMapper::toDto)
                 .orElseThrow(() -> new RuntimeException("No se encontró el usuario"));
@@ -45,16 +47,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserResponseDto create(UserRequestDto userRequestDto) {
 		
+		log.info("Guardando datos de usuario");
 		Address address = copomexService.getAddressByCp(userRequestDto.getCodigoPostal());
 		
 		User user = userMapper.toEntity(userRequestDto, address);
 		
-		return userMapper.toDto(userRepository.save(user));
+		UserResponseDto response =  userMapper.toDto(userRepository.save(user));
+		
+		log.info("Usuario creado con id: {}" + response.getId());
+		
+		return response;
 	}
 	
 	@Override
 	public UserResponseDto update(String id, UserRequestDto userRequestDto) {
 		
+		log.info("Actualizando datos de usuario con id {}" + id);
 		User user = userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("No se encontró el usuario"));
 		
 		user.setNombre(userRequestDto.getNombre());
@@ -62,13 +70,22 @@ public class UserServiceImpl implements UserService {
 		user.setApellidoMaterno(userRequestDto.getApellidoMaterno());
 		user.setCorreo(userRequestDto.getCorreo());
 		
+		if(!userRequestDto.getCodigoPostal().equals(user.getDireccion().getCodigoPostal())) {
+			log.info("Actualizando Address del registro: {}" + id);
+			Address address = copomexService.getAddressByCp(userRequestDto.getCodigoPostal());
+			user.setDireccion(address);
+		} else {
+			log.info("Sin acutalización de Address. Se conservan los datos del registro: {}" + id);
+			
+		}
+		
 		return userMapper.toDto(userRepository.save(user));
 	}
 	
 	@Override
 	public void deleteById(String id) {
-		log.info("Usuario Eliminado: {}" + id);
 		userRepository.deleteById(id);
+		log.info("Usuario Eliminado: {}" + id);
 		
 	}
 
