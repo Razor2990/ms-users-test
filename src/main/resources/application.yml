@@ -9,9 +9,7 @@ spring:
     mongodb:
       auto-index-creation: true
   mongodb:
-    host: localhost
-    port: 27017
-    database: examdb
+    uri: ${MONGO_URI}
 
 logging:
   level:
@@ -23,4 +21,5 @@ springdoc:
 
 copomex:
   api:
-    key: 2be62f9e-9625-4c58-87e0-173bc50997a0
+    key: ${COPOMEX_API_KEY}
+

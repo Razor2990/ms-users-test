@@ -37,7 +37,7 @@ public class CopomexService {
                 .bodyToMono(CopomexResponse.class)
                 .block();
 
-        log.info("CopomexResponse: {}" + response.toString());
+        log.info("CopomexResponse: {}", response.toString());
         
         if (response == null || response.getResponse() == null) {
             throw new RuntimeException("No se encontró información para el CP " + codigoPostal);

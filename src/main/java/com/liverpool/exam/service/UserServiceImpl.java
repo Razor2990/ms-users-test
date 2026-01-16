@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public UserResponseDto findById(String id) {
-		log.info("Obteniendo información del usuario con id: {}" + id);
+		log.info("Obteniendo información del usuario con id: {}", id);
 		return userRepository.findById(id)
 				.map(userMapper::toDto)
                 .orElseThrow(() -> new RuntimeException("No se encontró el usuario"));
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 		
 		UserResponseDto response =  userMapper.toDto(userRepository.save(user));
 		
-		log.info("Usuario creado con id: {}" + response.getId());
+		log.info("Usuario creado con id: {}", response.getId());
 		
 		return response;
 	}
@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserResponseDto update(String id, UserRequestDto userRequestDto) {
 		
-		log.info("Actualizando datos de usuario con id {}" + id);
+		log.info("Actualizando datos de usuario con id {}", id);
 		User user = userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("No se encontró el usuario"));
 		
 		user.setNombre(userRequestDto.getNombre());
@@ -71,11 +71,11 @@ public class UserServiceImpl implements UserService {
 		user.setCorreo(userRequestDto.getCorreo());
 		
 		if(!userRequestDto.getCodigoPostal().equals(user.getDireccion().getCodigoPostal())) {
-			log.info("Actualizando Address del registro: {}" + id);
+			log.info("Actualizando Address del registro: {}", id);
 			Address address = copomexService.getAddressByCp(userRequestDto.getCodigoPostal());
 			user.setDireccion(address);
 		} else {
-			log.info("Sin acutalización de Address. Se conservan los datos del registro: {}" + id);
+			log.info("Sin acutalización de Address. Se conservan los datos del registro: {}", id);
 			
 		}
 		
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteById(String id) {
 		userRepository.deleteById(id);
-		log.info("Usuario Eliminado: {}" + id);
+		log.info("Usuario Eliminado: {}", id);
 		
 	}
 
