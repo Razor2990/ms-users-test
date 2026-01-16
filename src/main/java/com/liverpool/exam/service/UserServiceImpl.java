@@ -11,6 +11,7 @@ import com.liverpool.exam.entity.Address;
 import com.liverpool.exam.entity.User;
 import com.liverpool.exam.mapper.UserMapper;
 import com.liverpool.exam.repository.UserRepository;
+import com.liverpool.exam.service.copomex.CopomexService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
 	
 	private UserRepository userRepository;
 	private UserMapper userMapper;
+	private CopomexService copomexService;
 	
 	@Override
 	public List<UserResponseDto> findAll() {
@@ -43,7 +45,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserResponseDto create(UserRequestDto userRequestDto) {
 		
-		Address address = Address.builder().codigoPostal(userRequestDto.getCodigoPostal()).build();
+		Address address = copomexService.getAddressByCp(userRequestDto.getCodigoPostal());
 		
 		User user = userMapper.toEntity(userRequestDto, address);
 		

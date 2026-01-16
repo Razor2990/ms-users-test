@@ -1,5 +1,7 @@
 package com.liverpool.exam.dto;
 
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,9 +10,11 @@ import lombok.Data;
 public class AddressResponseDto {
 	
 	private String codigoPostal;
+	private List<String> colonias;
+	private String tipoAsentamiento;
+	private String municipio;
     private String estado;
-    private String municipio;
-    private String colonia;
-    private String calle;
+    private String ciudad;
+    private String pais;
 
 }

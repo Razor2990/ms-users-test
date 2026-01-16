@@ -20,3 +20,7 @@ logging:
 springdoc:
   swagger-ui:
     path: /exa-tec-doc
+
+copomex:
+  api:
+    key: 2be62f9e-9625-4c58-87e0-173bc50997a0
