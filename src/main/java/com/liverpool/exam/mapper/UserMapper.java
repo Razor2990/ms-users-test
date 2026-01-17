@@ -10,10 +10,10 @@ import com.liverpool.exam.entity.User;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-	
-	@Mapping(target = "id", ignore = true)
-    @Mapping(target = "direccion", source = "address")
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "direccion", expression = "java(address)")
     User toEntity(UserRequestDto dto, Address address);
 
-	UserResponseDto toDto(User user);
+    UserResponseDto toDto(User user);
 }
