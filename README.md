@@ -71,17 +71,17 @@ Ejemplo de respuesta:
   "id": "696aa91550c83c4e015dddba",
   "nombre": "Erick Josué",
   "apellidoPaterno": "Guerrero",
-  "apellidoMaterno": "Rodríguez",
-  "correo": "josue_bat@outlook.com",
+  "apellidoMaterno": "+++++",
+  "correo": "++++++++",
   "direccion": {
-    "pais": "México",
-    "estado": "Ciudad de México",
-    "municipio": "Gustavo A. Madero",
-    "ciudad": "Ciudad de México",
-    "codigoPostal": "07918",
+    "pais": "+++++",
+    "estado": "+++++",
+    "municipio": "++++",
+    "ciudad": "++++",
+    "codigoPostal": "++++",
     "tipoAsentamiento": "Colonia",
     "colonias": [
-      "San Juan de Aragón VI Sección"
+      "++++++"
     ]
   }
 }
