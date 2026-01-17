@@ -11,7 +11,6 @@
 	<groupId>com.liverpool.exam</groupId>
 	<artifactId>ms-users-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<name>ms-users-test</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -56,11 +55,6 @@
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok-mapstruct-binding</artifactId>
 		    <version>0.2.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
